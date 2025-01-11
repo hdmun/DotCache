@@ -1,10 +1,19 @@
-using Microsoft.AspNetCore.Builder;
+using System;
+using System.Threading.Tasks;
 
 namespace DotCache.Server;
 
-public class Program
+internal class Program
 {
-    public static void Main(string[] args)
+    static async Task Main(string[] args)
     {
+        var app = new ServerApp();
+        app.Initiallize();
+
+        // TODO : 서비스로 우아하게 처리하자
+        Console.ReadLine();
+
+        app.Close();
     }
 }
+    
