@@ -46,6 +46,9 @@ public class TcpServer
 
     public void Close()
     {
+        _dispatcherEventLoopGroup.ShutdownGracefullyAsync().Wait();
+        _workerEventLoopGroup.ShutdownGracefullyAsync().Wait();
+
         var task = _channel.CloseAsync();
         task.Wait();
     }
